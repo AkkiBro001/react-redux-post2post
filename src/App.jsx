@@ -1,4 +1,4 @@
-import SignUP from "./components/formInput/signUP";
+import SignUp from "./components/formInput/signUp";
 import Header from "./components/header/header";
 import BackDrop from "./assets/bg.png" 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
       <Header/>
       <main className="max-w-[1000px] m-auto p-4">
       <Routes>
-        <Route path="/signup" element={<SignUP/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/user/:id" element={<User/>}/>
       </Routes>

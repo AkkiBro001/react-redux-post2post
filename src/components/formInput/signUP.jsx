@@ -1,4 +1,4 @@
-const SignUP = () => {
+const SignUp = () => {
 
   
   
@@ -17,4 +17,4 @@ const SignUP = () => {
   )
 }
 
-export default SignUP
+export default SignUp
