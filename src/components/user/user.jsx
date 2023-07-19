@@ -1,6 +1,12 @@
+import PostInput from "../formInput/postInput"
+import Posts from "./posts"
+
 const User = () => {
   return (
-    <div>user</div>
+    <div>
+        <PostInput/>
+        <Posts/>
+    </div>
   )
 }
 

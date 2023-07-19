@@ -5,14 +5,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 const Header = () => {
   const theme = JSON.parse(localStorage.getItem('theme'))
   const [dark, setDark] = useState(theme)
+  const [scroll, setScroll] = useState(false)
   const [toggle, setToggle] = useState(false)
   const navigate = useNavigate()
   const loaction = useLocation()
   
+  
   useEffect(()=>{
-    
-    
-    
     if(dark){
         document.body.classList.add("dark")
         localStorage.setItem('theme',JSON.stringify(dark))
@@ -37,8 +36,23 @@ const Header = () => {
   
   },[toggle])
 
+  function handleScroll(){
+      if(window.scrollY > 20){
+        setScroll(true)
+      }else{
+        setScroll(false)
+      }
+  }
+
+  useEffect(()=>{
+    
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  
+  },[scroll])
+
   return (
-    <header className="px-4 py-2 flex justify-between relative items-center gap-3 md:gap-5">
+    <header className={`px-4 py-2 flex justify-between items-center gap-3 md:gap-5 sticky top-0 z-50 ${scroll ? 'theme-mode' : ''}`}>
         <div className="logo font-bold cursor-pointer"
         onClick={()=>navigate('/')}
         >
