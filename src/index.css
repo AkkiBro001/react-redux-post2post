@@ -19,7 +19,7 @@
     @apply bg-slate-900 dark:bg-white text-white dark:text-slate-900;
   }
 
-  .error{
+  .errorInput{
     @apply placeholder:text-red-600 outline-red-600 border-red-600;
   }
 }
