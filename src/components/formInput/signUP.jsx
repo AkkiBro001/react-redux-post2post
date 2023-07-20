@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../../app/features/user";
+import { addUser } from "../../app/features/users";
 import { useNavigate } from "react-router-dom";
 
 

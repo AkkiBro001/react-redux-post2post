@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-import { setLogged } from "../../app/features/user"
+import { setLogged } from "../../app/features/users"
 
 const SignIn = () => {
   const navigate = useNavigate()

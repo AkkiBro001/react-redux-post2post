@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { setLoggedOut } from "../../app/features/user";
+import { setLoggedOut } from "../../app/features/users";
 
 const Header = () => {
   const theme = JSON.parse(localStorage.getItem('theme'))
