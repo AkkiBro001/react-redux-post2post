@@ -11,6 +11,8 @@ const User = () => {
   const navigate = useNavigate()
   const activeUser = users.find(user => user.isLogged)
   
+  
+
   useEffect(()=>{
     localStorage.setItem('posts',JSON.stringify(posts))
   },[posts])

@@ -8,6 +8,7 @@ const PostsSlice = createSlice({
         addPost: {
             reducer(state, action){
                 state.push(action.payload)
+                
             },
             prepare(post, userID){
                 return{
