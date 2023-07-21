@@ -2,7 +2,7 @@
 import { useState } from "react"
 import SinglePost from "./singlePost"
 
-const Posts = ({posts, users, activeUserID}) => {
+const Posts = ({posts, users, activeUserID, setDeletePost}) => {
 
     const [sort, setSort] = useState("newest")
     let orderedPost;
@@ -21,7 +21,7 @@ const Posts = ({posts, users, activeUserID}) => {
                 <span className="mr-1">Total Posts:</span>
                 <span className="italic">{posts.length}</span>
             </div>
-            <select name="" id="" className="p-1 border-2 theme-border theme-mode rounded-md text-md"
+            <select name="" id="" className="p-1 border-2 theme-border theme-mode rounded-md text-md md:text-xl"
             value={sort}
             onChange={(e)=>setSort(e.target.value)}
             >
@@ -38,7 +38,7 @@ const Posts = ({posts, users, activeUserID}) => {
                 orderedPost.map(post => {
                 const userName = users?.find(user => user.userID === post.userID).name;
                 
-                return <SinglePost key={post.postID} {...post} userName={userName} activeUserID={activeUserID}/>
+                return <SinglePost key={post.postID} {...post} userName={userName} activeUserID={activeUserID} setDeletePost={setDeletePost}/>
                 })
             }
             

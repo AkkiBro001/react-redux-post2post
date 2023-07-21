@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate, useParams } from "react-router-dom"
 import PostInput from "../formInput/postInput"
 import Posts from "./posts"
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import DeletePost from "./deletePost"
 
 const User = () => {
   const { id } = useParams()
@@ -10,6 +12,7 @@ const User = () => {
   const posts = useSelector(state => state.posts);
   const navigate = useNavigate()
   const activeUser = users.find(user => user.isLogged)
+  const [deletePost, setDeletePost] = useState("")
   
   
 
@@ -31,8 +34,9 @@ const User = () => {
   return (
 
     <div>
+      {deletePost && <DeletePost setDeletePost={setDeletePost} deletePostID={deletePost}/>}
       <PostInput userID={activeUser.userID}/>
-      <Posts posts={posts} users={users} activeUserID={activeUser.userID}/>
+      <Posts posts={posts} users={users} activeUserID={activeUser.userID} setDeletePost={setDeletePost}/>
     </div>
 
   )
