@@ -89,6 +89,7 @@ const SignUp = () => {
     if(activeUser){
       navigate(`/user/${activeUser.userID}`)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
 
