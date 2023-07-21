@@ -1,12 +1,23 @@
 /* eslint-disable react/prop-types */
 import {AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiFillEdit, AiFillDelete} from "react-icons/ai"
 import { TimeAgo, titleCase } from "../../utils/utils"
-import { likePost, dislikePost } from "../../app/features/posts"
+import { likePost, dislikePost, editPost } from "../../app/features/posts"
 import { useDispatch } from "react-redux"
+import { useRef, useState } from "react"
 
-const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDislikeByUser, postLikeByUser, userName, activeUserID, setDeletePost}) => {
+const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDislikeByUser, postLikeByUser, isEditedPost, userName, activeUserID, setDeletePost}) => {
     
   const dispatch = useDispatch()
+  const [isEdit, setIsEdit] = useState(false)
+  const editTextRef = useRef()
+
+  function handleEditNote(post, postID){
+   
+    if(post){
+        dispatch(editPost({post, postID}))
+        setIsEdit(false)
+    }
+  }
 
   return (
     <article>
@@ -18,10 +29,12 @@ const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDi
                 <header className="flex justify-between">
                     <h3 className="flex flex-col text-sm">
                         <span className="sm:text-2xl text-xl font-bold leading-none mb-1">{titleCase(userName)}</span>
-                        <span className="opacity-60">{TimeAgo(date)}</span>
+                        <span className="opacity-60">{TimeAgo(date)} {isEditedPost ? "(edited)" : ""}</span>
                     </h3>
                     {activeUserID === userID && <div className="flex gap-4 text-xl">
-                        <span className="flex items-start gap-1 opacity-75 cursor-pointer hover:opacity-100 select-none">
+                        <span className="flex items-start gap-1 opacity-75 cursor-pointer hover:opacity-100 select-none"
+                        onClick={()=>setIsEdit(pre => !pre)}
+                        >
                             <AiFillEdit/>
                             <span className="text-lg leading-5 hidden md:block">Edit</span>
                         </span>
@@ -33,9 +46,27 @@ const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDi
                         </span>
                     </div>}
                 </header>
-                <p className="mt-1 md:text-xl text-lg">
+                {
+                !isEdit ? <p className="mt-1 md:text-xl text-lg">
                     {post}
                 </p>
+                :
+                <div className="mt-1 md:text-xl text-lg">
+                    <textarea rows="5" cols="50"
+                    defaultValue={post}
+                    className="w-full p-2 border-2 theme-border bg-transparent rounded-md"
+                    ref={editTextRef}
+                    ></textarea>
+                    <div className="flex gap-3">
+                        <span className="py-1 px-2 theme-mode rounded-md text-md"
+                        onClick={()=>handleEditNote(editTextRef.current?.value, postID)}
+                        >Save</span>
+                        <span className="py-1 px-2 theme-mode rounded-md text-md"
+                        onClick={()=>setIsEdit(false)}
+                        >Cancel</span>
+                    </div>
+                </div>
+                }
 
                 <div className="flex justify-end items-center gap-3">
                     <span className="flex justify-center items-center gap-1">
