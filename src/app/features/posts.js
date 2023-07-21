@@ -20,7 +20,8 @@ const PostsSlice = createSlice({
                         postLikeByUser: [],
                         postDislikeByUser: [],
                         likeCount: 0,
-                        disLikeCount: 0
+                        disLikeCount: 0,
+                        isEditedPost: false,
                     }
                 }
             }
@@ -81,9 +82,33 @@ const PostsSlice = createSlice({
                 }
             })
         },
+
+        deletePost: (state, action) => {
+            return state.filter(post => post.postID !== action.payload)
+        },
+        editPost: (state, action) => {
+            
+            return state.map(post => {
+               
+                if(post.postID === action.payload.postID){
+                    return {
+                        ...post,
+                        post: action.payload.post,
+                        date: new Date().toISOString(),
+                        postLikeByUser: [],
+                        postDislikeByUser: [],
+                        likeCount: 0,
+                        disLikeCount: 0,
+                        isEditedPost: true,
+                    }
+                }else{
+                    return post;
+                }
+            })
+        }
     }
 })
 
 
 export default PostsSlice.reducer;
-export const {addPost, likePost, dislikePost} = PostsSlice.actions;
+export const {addPost, likePost, dislikePost, deletePost, editPost} = PostsSlice.actions;

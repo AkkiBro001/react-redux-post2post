@@ -17,7 +17,7 @@ function App() {
         <BrowserRouter>
         
           <Header />
-          <main className="max-w-[1000px] m-auto p-4">
+          <main className="max-w-[1000px] m-auto p-4 mt-4">
             <Routes>
               <Route path="/" element={<SignIn />} />
               <Route path="/signup" element={<CreateAccount />} />
