@@ -1,4 +1,4 @@
-import SignUp from "./components/formInput/signUp";
+import CreateAccount from "./components/formInput/createAccount";
 import Header from "./components/header/header";
 import BackDrop from "./assets/bg.png"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -20,7 +20,7 @@ function App() {
           <main className="max-w-[1000px] m-auto p-4">
             <Routes>
               <Route path="/" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signup" element={<CreateAccount />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/user/:id" element={<User />} />
               <Route path="/user/notfound" element={<NotFound />} />
