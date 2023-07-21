@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../app/features/users";
 import { useNavigate } from "react-router-dom";
 
 
-const SignUp = () => {
+const CreateAccount = () => {
 
   const users = useSelector(state => state.users)
   const dispatch = useDispatch()
@@ -18,7 +19,7 @@ const SignUp = () => {
     passError: "",
     cnfPassError: "",
   })
-  const [isSignUp, setIsSignUp] = useState(false)
+  const [iscreateAccount, setIscreateAccount] = useState(false)
 
   const userNames = users.map(user => user.name.toLowerCase())
   const activeUser = users.find(user => user.isLogged);
@@ -74,7 +75,7 @@ const SignUp = () => {
           userInputRef.current.value = "";
           passInputRef.current.value = "";
           cnfPassInputRef.current.value = "";
-          setIsSignUp(true)
+          setIscreateAccount(true)
           setError({
             isError: false,
             userError: "",
@@ -103,11 +104,11 @@ const SignUp = () => {
     onSubmit={onSubmit}
     >
         <h1 className="md:text-4xl text-3xl mb-3 text-center">Sign Up</h1>
-        {isSignUp && <p className="flex flex-col items-center mb-3 bg-green-600 p-1 rounded-md text-center">
+        {iscreateAccount && <p className="flex flex-col items-center mb-3 bg-green-600 p-1 rounded-md text-center">
           <span className="text-lg leading-none">Congratulation!! Your accout has been created successfully.</span>
           <span className="underline cursor-pointer mt-1"
           onClick={()=>{
-            setIsSignUp(false)
+            setIscreateAccount(false)
             navigate('/signin')
           }}
           >Go to sign in page</span>
@@ -134,4 +135,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default CreateAccount
