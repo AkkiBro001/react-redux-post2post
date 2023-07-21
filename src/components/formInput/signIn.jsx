@@ -54,6 +54,7 @@ const SignIn = () => {
     if(activeUser){
       navigate(`/user/${activeUser.userID}`)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   if(activeUser){

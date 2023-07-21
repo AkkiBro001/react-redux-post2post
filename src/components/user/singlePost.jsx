@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import {AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike} from "react-icons/ai"
 import { TimeAgo, titleCase } from "../../utils/utils"
 import { likePost, dislikePost } from "../../app/features/posts"
 import { useDispatch } from "react-redux"
 
-const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDislikeByUser, postLikeByUser, userName, activeUserID}) => {
+const SinglePost = ({postID, date, disLikeCount, likeCount, post, postDislikeByUser, postLikeByUser, userName, activeUserID}) => {
     
   const dispatch = useDispatch()
 
