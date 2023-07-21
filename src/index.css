@@ -67,7 +67,7 @@ body{
   position: absolute;
   border-radius: 50%;
   @apply bg-slate-900 md:shadow-[inset_7px_-4px_0px_0px_#fff] md:w-[20px] md:h-[20px] md:top-[3px] md:left-[3px]
-  w-[12px] h-[12px] top-[1.8px] left-[2px] shadow-[inset_3px_-4px_0px_0px_#fff];
+  w-[12px] h-[12px] top-[2px] left-[2px] shadow-[inset_3px_-4px_0px_0px_#fff];
   transition: 0.3s;
 }
 

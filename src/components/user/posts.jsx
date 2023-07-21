@@ -15,20 +15,20 @@ const Posts = ({posts, users, activeUserID}) => {
     }
     
   return (
-    <div className="mt-3 mb-[50px]">
+    <div className="mt-6 mb-[50px]">
         <header className="flex justify-between items-center pb-3 mb-4 border-b-2 theme-border">
             <div className="text-lg opacity-70 font-bold md:text-xl lg:text-2xl">
                 <span className="mr-1">Total Posts:</span>
                 <span className="italic">{posts.length}</span>
             </div>
-            <select name="" id="" className="p-1 border-2 theme-border theme-mode rounded-md text-sm md:text-md"
+            <select name="" id="" className="p-1 border-2 theme-border theme-mode rounded-md text-md"
             value={sort}
             onChange={(e)=>setSort(e.target.value)}
             >
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="liked">Most liked</option>
-                <option value="disliked">Most disliked</option>
+                <option value="newest" className="py-3">Newest</option>
+                <option value="oldest" className="py-3">Oldest</option>
+                <option value="liked" className="py-3">Most liked</option>
+                <option value="disliked" className="py-3">Most disliked</option>
             </select>
         </header>
 

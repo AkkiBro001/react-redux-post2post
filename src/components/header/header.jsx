@@ -62,17 +62,17 @@ const Header = () => {
   }
 
   return (
-    <header className={`px-4 py-2 flex justify-between items-center gap-3 md:gap-5 sticky top-0 z-50 ${scroll ? 'theme-mode' : ''}`}>
+    <header className={`px-4 py-2 flex justify-between items-center gap-5 sticky top-0 z-50 ${scroll ? 'theme-mode' : ''}`}>
         <div className="logo font-bold cursor-pointer"
         onClick={()=>navigate('/')}
         >
-            <h2 className="text-1xl font-serif md:text-4xl">
+            <h2 className="text-[1.35rem] font-serif md:text-4xl">
                 <span className="inline-block align-top">Post</span>
                 <span className="text-2xl inline-block align-middle md:text-6xl">2</span>
                 <span className="inline-block align-[-10px] md:align-[-20px]">Post</span>
                 </h2>
         </div>
-        {!activeUser && <ul className="ml-auto flex gap-2 md:gap-3 text-md">
+        {!activeUser && <ul className="ml-auto flex gap-4 md:gap-4 text-lg">
           <li>
               <Link to="/signup" className={`${loaction.pathname.includes('/signin') || loaction.pathname === '/' ? 'opacity-60' : ""} md:text-xl font-bold`}>Sign Up</Link>
           </li>
@@ -88,16 +88,16 @@ const Header = () => {
             </label>
             
         </div>
-        {activeUser && <div className="select-none rounded-full w-[25px] h-[25px] invert-theme flex justify-center items-center text-sm font-bold md:w-[35px] md:h-[35px] md:text-xl cursor-pointer relative"
+        {activeUser && <div className="select-none rounded-full invert-theme flex justify-center items-center font-bold w-[35px] h-[35px] text-xl cursor-pointer relative"
         onClick={()=>setToggle(true)}
         >
           <span>{activeUser?.name.charAt(0).toUpperCase()}</span>
-          {toggle && <div className="absolute invert-theme top-[30px] md:top-[40px] right-0 min-w-[100px] md:min-w-[200px] rounded-[3px] p-1 profile cursor-default"
+          {toggle && <div className="absolute invert-theme top-[40px] md:top-[40px] right-0 min-w-[175px] md:min-w-[300px] rounded-[3px] p-1 profile cursor-default"
           onBlur={()=>setToggle(false)}
           tabIndex={1}
           >
-              <p className="text-center pb-[0.15em] mb-[0.15em] border-b-[1px] border-white dark:border-slate-900">{activeUser?.name}</p>
-              <Link to="/signin" className="opacity-70 font-normal" onClick={(e)=>{handleLoggedOut(e, activeUser?.userID)}}>Logout</Link>
+              <p className="text-center pb-[0.15em] mb-[0.15em] border-b-[1px] border-white dark:border-slate-900 text-lg py-1">{activeUser?.name}</p>
+              <Link to="/signin" className="opacity-70 font-normal block py-1 text-lg" onClick={(e)=>{handleLoggedOut(e, activeUser?.userID)}}>Logout</Link>
           </div>}
         </div>}
     </header>

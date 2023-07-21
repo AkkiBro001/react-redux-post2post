@@ -38,13 +38,13 @@ const SinglePost = ({postID, date, disLikeCount, likeCount, post, postDislikeByU
             
         </section>
 
-        <section className="ml-[50px] mt-1 flex gap-3">
-                <span className="hover:opacity-100 cursor-pointer md:text-2xl text-xl opacity-70"
+        <section className="ml-[50px] mt-2 flex gap-5">
+                <span className="hover:opacity-100 cursor-pointer md:text-2xl text-2xl opacity-70"
                 onClick={()=>dispatch(likePost({postID, activeUserID}))}
                 >
                     {postLikeByUser.includes(activeUserID) ? <AiFillLike/> : <AiOutlineLike/>}
                 </span>
-                <span className="hover:opacity-100 cursor-pointer md:text-2xl text-xl opacity-70"
+                <span className="hover:opacity-100 cursor-pointer md:text-2xl text-2xl opacity-70"
                 onClick={()=>dispatch(dislikePost({postID, activeUserID}))}
                 >
                     {postDislikeByUser.includes(activeUserID) ? <AiFillDislike/> : <AiOutlineDislike/>}
