@@ -10,12 +10,28 @@ const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDi
   const dispatch = useDispatch()
   const [isEdit, setIsEdit] = useState(false)
   const editTextRef = useRef()
+  const [error, setError] = useState({
+    isError: false,
+    postError: "",
+  })
 
   function handleEditNote(post, postID){
    
-    if(post){
-        dispatch(editPost({post, postID}))
+    if(post && post.match(/[^\s+]/g)){
+        dispatch(editPost({post: post.trim(), postID}))
         setIsEdit(false)
+        setError({
+            isError: false,
+            postError: "",
+          })
+    }else{
+        setError({
+            isError: true,
+            postError: "Empty string not allowed. Value must be needed",
+            
+        })
+
+        editTextRef.current.value = "";
     }
   }
 
@@ -54,15 +70,23 @@ const SinglePost = ({postID, userID, date, disLikeCount, likeCount, post, postDi
                 <div className="mt-1 md:text-xl text-lg">
                     <textarea rows="5" cols="50"
                     defaultValue={post}
-                    className="w-full p-2 border-2 theme-border bg-transparent rounded-md"
+                    className={`w-full p-2 border-2 bg-transparent rounded-md ${error.isError && error.postError ? 'errorInput' : "theme-border"}`}
                     ref={editTextRef}
+                    placeholder={`${error.isError && error.postError ? error.postError : ""}`}
+
                     ></textarea>
                     <div className="flex gap-3">
-                        <span className="py-1 px-2 theme-mode rounded-md text-md"
+                        <span className="py-1 px-2 theme-mode rounded-md text-md cursor-pointer"
                         onClick={()=>handleEditNote(editTextRef.current?.value, postID)}
                         >Save</span>
-                        <span className="py-1 px-2 theme-mode rounded-md text-md"
-                        onClick={()=>setIsEdit(false)}
+                        <span className="py-1 px-2 theme-mode rounded-md text-md cursor-pointer"
+                        onClick={()=>{
+                            setIsEdit(false);
+                            setError({
+                                isError: false,
+                                postError: "",
+                              })
+                        }}
                         >Cancel</span>
                     </div>
                 </div>

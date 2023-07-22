@@ -100,7 +100,7 @@ const CreateAccount = () => {
 
  return (
     
-    <div className="h-[calc(100vh-99.78px)] md:h-[calc(100vh-119.78px)] flex flex-col justify-center max-w-[500px] mx-auto"
+    <div className="h-[calc(100vh-140.78px)] md:h-[calc(100vh-150.78px)] flex flex-col justify-center max-w-[500px] mx-auto"
     onSubmit={onSubmit}
     >
         <h1 className="md:text-4xl text-3xl mb-3 text-center">Sign Up</h1>
